@@ -9,8 +9,7 @@ import org.junit.runner.RunWith;
         plugin = "pretty",
         monochrome = true,
         glue = "com.wolf.features.steps",
-        features = "/home/mlobodev/Área de Trabalho/fundamentos/src/main/java/com/wolf/features",
-        strict = true
+        features = "/home/mlobodev/Área de Trabalho/fundamentos/src/main/java/com/wolf/features"
 )
 
 public class Runner {
