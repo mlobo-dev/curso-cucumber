@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         snippets = SnippetType.CAMELCASE,
         plugin = "pretty",
-        monochrome = true,
-        glue = "com.wolf.features.steps",
-        features = "/home/mlobodev/Área de Trabalho/fundamentos/src/main/java/com/wolf/features"
+//        monochrome = true,
+        tags = {"@esse"},
+        glue = "features/steps",
+        features = "src/test/java/features"
 )
 
 public class Runner {
