@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         snippets = SnippetType.CAMELCASE,
         plugin = "pretty",
 //        monochrome = true,
-        tags = {"@esse"},
+//        tags = {"@esse"},
         glue = "features/steps",
         features = "src/test/java/features"
 )
