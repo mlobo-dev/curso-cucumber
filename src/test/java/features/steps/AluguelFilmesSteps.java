@@ -3,12 +3,17 @@ package features.steps;
 import com.wolf.model.Filme;
 import com.wolf.model.NotaAluguel;
 import com.wolf.services.AluguelService;
+import com.wolf.utils.DateUtil;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class AluguelFilmesSteps {
@@ -16,6 +21,7 @@ public class AluguelFilmesSteps {
     private Filme filme;
     private AluguelService aluguelService = new AluguelService();
     private NotaAluguel nota;
+    private String tipoAluguel;
 
     @Given("^um filme com estoque de (\\d+) unidades$")
     public void umFilmeComEstoqueDeUnidades(int arg1) {
@@ -33,7 +39,7 @@ public class AluguelFilmesSteps {
     @When("^alugar$")
     public void alugar() {
         try {
-            nota = aluguelService.alugar(filme);
+            nota = aluguelService.alugar(filme, tipoAluguel);
         } catch (RuntimeException e) {
             erro = e.getMessage();
         }
@@ -65,5 +71,24 @@ public class AluguelFilmesSteps {
     public void naoSeraPossivelAlugar() throws Throwable {
         Assert.assertEquals("Filme sem estoque", erro);
     }
+
+    @Given("^que o tipo do aluguel seja (.*)$")
+    public void queOTipoDoAluguelSejaExtendido(String tipo) throws Throwable {
+        tipoAluguel = tipo;
+    }
+
+    @Then("^a data de entrega será em (\\d+) dias?$")
+    public void aDataDeEntregaSeráEmDias(int arg1) {
+        Date dataEsperada = DateUtil.obterDataDiferencaDias(arg1);
+        Date dataReal = nota.getEntrega();
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Assert.assertEquals(format.format(dataEsperada), format.format(dataReal));
+    }
+
+    @Then("^a pontuacao sera de (\\d+) pontos$")
+    public void aPontuacaoSeraDePontos(int arg1) throws Throwable {
+        Assert.assertEquals(arg1,nota.getPontuacao());
+    }
+
 
 }

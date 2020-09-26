@@ -9,6 +9,7 @@ import java.util.Date;
 @Setter
 public class NotaAluguel {
 
-    private  double preco;
+    private double preco;
     private Date entrega;
+    private int pontuacao;
 }
