@@ -12,3 +12,9 @@ Scenario: Deve alugar um filme com sucesso
   Then O preco do aluguel será R$ 3
   And a data de entrega será no dia seguinte
   And o estoque do filme será 1 unidade
+
+Scenario: Não deve alugar filme sem estoque
+  Given um filme com estoque de 0 unidades
+  When alugar
+  Then nao sera possivel alugar
+  And o estoque do filme será 0 unidade

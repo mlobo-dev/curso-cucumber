@@ -28,9 +28,16 @@ public class AluguelFilmesSteps {
         filme.setAluguel(arg1);
     }
 
+    String erro = "";
+
     @When("^alugar$")
     public void alugar() {
-        nota = aluguelService.alugar(filme);
+        try {
+            nota = aluguelService.alugar(filme);
+        } catch (RuntimeException e) {
+            erro = e.getMessage();
+        }
+
     }
 
     @Then("^O preco do aluguel será R\\$ (\\d+)$")
@@ -52,6 +59,11 @@ public class AluguelFilmesSteps {
     @Then("^o estoque do filme será (\\d+) unidade$")
     public void oEstoqueDoFilmeSeráUnidade(int arg1) {
         Assert.assertEquals(arg1, filme.getEstoque());
+    }
+
+    @Then("^nao sera possivel alugar$")
+    public void naoSeraPossivelAlugar() throws Throwable {
+        Assert.assertEquals("Filme sem estoque", erro);
     }
 
 }
