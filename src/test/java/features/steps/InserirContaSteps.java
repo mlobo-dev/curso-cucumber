@@ -67,4 +67,12 @@ public class InserirContaSteps {
         String text = driver.findElement(By.xpath("//div[@class='alert alert-success']")).getText();
         Assert.assertEquals("Conta adicionada com sucesso!", text);
     }
+
+    @Então("^sou notificar que o nome da conta é obrigatório$")
+    public void souNotificarQueONomeDaContaÉObrigatório() throws Throwable {
+        String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+        Assert.assertEquals("Informe o nome da conta", text);
+    }
+
+
 }

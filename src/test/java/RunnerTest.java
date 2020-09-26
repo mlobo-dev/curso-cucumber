@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
 //        monochrome = true,
         tags = {"~@ignore"},
         glue = "features/steps",
-        features = "src/test/java/features/inserir_conta.feature"
+        features = "src/test/java/features/inserir_conta.feature",
+        dryRun = false
 )
 
 public class RunnerTest {
