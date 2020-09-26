@@ -2,8 +2,7 @@ package com.wolf.services;
 
 import com.wolf.model.Filme;
 import com.wolf.model.NotaAluguel;
-
-import java.util.Calendar;
+import com.wolf.utils.DateUtil;
 
 public class AluguelService {
 
@@ -11,9 +10,7 @@ public class AluguelService {
         if (filme.getEstoque() == 0) throw new RuntimeException("Filme sem estoque");
         NotaAluguel nota = new NotaAluguel();
         nota.setPreco(filme.getAluguel());
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-        nota.setEntrega(calendar.getTime());
+        nota.setEntrega(DateUtil.obterDataDiferencaDias(1));
         filme.setEstoque(filme.getEstoque() - 1);
         return nota;
     }
