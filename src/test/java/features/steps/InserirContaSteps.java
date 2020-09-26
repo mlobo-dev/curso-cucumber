@@ -1,6 +1,8 @@
 package features.steps;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
@@ -72,6 +74,22 @@ public class InserirContaSteps {
     public void souNotificarQueONomeDaContaÉObrigatório() throws Throwable {
         String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
         Assert.assertEquals("Informe o nome da conta", text);
+    }
+
+    @Então("^sou notificado que já existe uma conta com esse nome$")
+    public void souNotificadoQueJáExisteUmaContaComEsseNome() throws Throwable {
+        String text = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+        Assert.assertEquals("Já existe uma conta com esse nome!", text);
+    }
+
+    @Before
+    public void inicio(){
+        System.out.println("print before");
+    }
+
+    @After
+    public void fecharBrowser(){
+        driver.quit();
     }
 
 
