@@ -31,3 +31,4 @@ Feature: Alugar filme
       | preco | tipo      | valor | qtdDias | pontuacao |
       |  4    | extendido | 8     | 3       |  2        |
       |  4    | comum     | 4     | 1       |  1        |
+

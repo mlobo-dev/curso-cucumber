@@ -1,5 +1,5 @@
 @esse
-Feature: feature teste
+Feature: feature Aprender cucumber
 
   Scenario: Scenario
     Given que criei o arquivo corretamente
