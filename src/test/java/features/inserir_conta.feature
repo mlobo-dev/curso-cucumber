@@ -5,7 +5,7 @@ Funcionalidade: Cadastro de contas
   Gostaria de cadastrar contas
   Para que eu possa distribuir meu dinheiro de uma forma mais organizada
 
-  @ignore
+
   Cenário: Deve inserir uma conta com sucesso
     Dado que estou acessando a aplicação
     Quando informo o usuário "abc@mail.com"
@@ -14,7 +14,7 @@ Funcionalidade: Cadastro de contas
     Então visualizo a página inicial
     Quando seleciono Contas
     E seleciono Adicionar
-    E informo a conta "Conta de Teste2"
+    E informo a conta "Conta de Teste"
     E seleciono Salvar
     Então a conta é inserida com sucesso
 
@@ -39,6 +39,6 @@ Funcionalidade: Cadastro de contas
     Então visualizo a página inicial
     Quando seleciono Contas
     E seleciono Adicionar
-    E informo a conta "Conta de Teste"
+    E informo a conta "Conta mesmo nome"
     E seleciono Salvar
     Então sou notificado que já existe uma conta com esse nome
