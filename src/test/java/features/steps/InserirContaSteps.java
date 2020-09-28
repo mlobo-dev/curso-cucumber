@@ -1,15 +1,22 @@
 package features.steps;
 
 import cucumber.api.PendingException;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 public class InserirContaSteps {
 
@@ -87,7 +94,13 @@ public class InserirContaSteps {
         System.out.println("print before");
     }
 
-    @After
+    @After(order = 1)
+    public void screenshot(Scenario cenario) throws IOException {
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file,new File("target/screenshot/"+cenario.getId()+".jpg"));
+    }
+
+    @After(order = 0)
     public void fecharBrowser(){
         driver.quit();
     }
