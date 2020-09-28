@@ -94,13 +94,13 @@ public class InserirContaSteps {
         System.out.println("print before");
     }
 
-    @After(order = 1)
+    @After(order = 1,value = {"@funcionais"})
     public void screenshot(Scenario cenario) throws IOException {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file,new File("target/screenshot/"+cenario.getId()+".jpg"));
     }
 
-    @After(order = 0)
+    @After(order = 0,value = {"@funcionais"})
     public void fecharBrowser(){
         driver.quit();
     }
